@@ -1,4 +1,34 @@
-# Code Descriptions
+# Concurrency in Python
+
+### Introduction to Concurrency in Python
+
+Concurrency is the ability of a program to handle multiple tasks simultaneously. In Python, there are two primary ways to achieve concurrency: multi-threading and multi-processing.
+
+#### Multi-Threading
+
+Multi-threading is a concurrent execution model where multiple threads share the same resources, such as memory space. Threads are lightweight, and they can run concurrently, allowing for better responsiveness and resource utilization. However, Python's Global Interpreter Lock (GIL) limits the execution of multiple threads in a single process, making it challenging to achieve true parallelism.
+
+##### Global Interpreter Lock (GIL)
+
+The Global Interpreter Lock (GIL) is a mutex that protects access to Python objects, preventing multiple native threads from executing Python bytecodes at once. This means that, even in a multi-threaded environment, only one thread can execute Python bytecode at a time.
+
+As a result, the GIL can become a bottleneck in CPU-bound tasks, limiting the performance gain from using multiple threads. However, for I/O-bound tasks, where threads spend a significant amount of time waiting for external resources, the GIL is less of an issue, and multi-threading can still provide benefits.
+
+#### Multi-Processing
+
+Multi-processing, on the other hand, involves running multiple processes concurrently. Each process has its own Python interpreter and memory space, allowing for true parallelism and efficient utilization of multiple CPU cores. Unlike threads, processes do not share memory by default, which can help avoid many concurrency-related issues.
+
+
+#### Understanding GIL
+
+The Global Interpreter Lock (GIL) can impact the performance of multi-threaded Python programs. When dealing with CPU-bound tasks, consider using multi-processing for better parallelism. For I/O-bound tasks, multi-threading can still provide advantages.
+
+### Conclusion
+
+Concurrency in Python involves managing multiple tasks simultaneously. Understanding the GIL and choosing the appropriate concurrency model based on the nature of the tasks is crucial for optimizing performance. This repository provides examples of both multi-threading and multi-processing in Python, allowing you to explore and compare these concurrency approaches.
+
+
+
 
 ## process.py
 The `process.py` file contains code related to multiprocessing. It imports the necessary modules and functions such as `Pool`, `time`, `multi_thread` from `thread.py`, and `is_prime` and `DEFAULT_NUMBERS` from `utils.py`. 
